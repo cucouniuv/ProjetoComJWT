@@ -28,6 +28,7 @@ namespace APIAlturas
         public void ConfigureServices(IServiceCollection services)
         {
             // jwt
+            //http://www.macoratti.net/16/08/mvc6_di1.htm
             services.AddTransient<UsersDAO>();
 
             var signingConfigurations = new SigningConfigurations();
@@ -42,6 +43,8 @@ namespace APIAlturas
 
             services.AddAuthentication(authOptions =>
             {
+                // Utilizado em [Authorize("Bearer")] - ConversorAlturasController
+                // Valor padrão é JwtBearerDefaults.AuthenticationScheme = Bearer
                 authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(bearerOptions =>
