@@ -70,4 +70,5 @@ O retorno será similar a este:
 * .NET Core 2.1
 * MySql.Data 8.0.21
 * Dapper 2.0.35
+* Redis
 
