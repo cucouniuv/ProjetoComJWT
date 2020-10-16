@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using APIAlturas.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace APIAlturas
@@ -27,6 +22,14 @@ namespace APIAlturas
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // Ativando o uso de cache via Redis
+            services.AddDistributedRedisCache(options =>
+            {
+                options.Configuration = Configuration.GetConnectionString("ConexaoRedis");
+                options.InstanceName = "APIAlturas";
+            });
+
+
             // jwt
             //http://www.macoratti.net/16/08/mvc6_di1.htm
             services.AddTransient<UsersDAO>();
