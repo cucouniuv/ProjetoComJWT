@@ -18,7 +18,7 @@ Coloque em Raw um JSON do tipo:
 {
     "userID": "usuario01",
     "accessKey": "94be650011cf412ca906fc335f615cdc",
-	"GrantType": "password"
+    "GrantType": "password"
 }
 ```
 
